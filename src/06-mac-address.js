@@ -5,15 +5,15 @@
  * Your task is to check by given string inputString
  * whether it's a MAC-48 address or not.
  *
- * @param {Number} inputString
- * @return {Number}
+ * @return {boolean}
  *
  * @example
  * For 00-1B-63-84-45-E6, the output should be true.
  *
+ * @param n
  */
-function isMAC48Address(/* n */) {
-  throw new Error('Not implemented');
+function isMAC48Address(n) {
+  return /^[0-9A-F]{1,2}([-])[0-9a-f]{1,2}(?:\1[0-9A-F]{1,2}){4}$/i.test(n);
 }
 
 module.exports = isMAC48Address;

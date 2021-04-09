@@ -21,8 +21,34 @@
  *  [1, 1, 1]
  * ]
  */
-function minesweeper(/* matrix */) {
-  throw new Error('Not implemented');
-}
+const minesweeper = (matrix) => {
+  const res = [];
+
+  for (let i = 0; i < matrix.length; i++) {
+    res.push([]);
+
+    const prevRow = matrix[i - 1];
+    const currRow = matrix[i];
+    const nextRow = matrix[i + 1];
+
+    for (let j = 0; j < matrix[i].length; j++) {
+      let counter = 0;
+
+      [prevRow, currRow, nextRow].forEach((el) => {
+        if (el) {
+          if (el[j - 1] === true || el[j] === true || el[j + 1] === true) {
+            counter++;
+          }
+        }
+      });
+      if (matrix[i][j] === true) {
+        res[i].push(1);
+      } else {
+        res[i].push(counter);
+      }
+    }
+  }
+  return res;
+};
 
 module.exports = minesweeper;
